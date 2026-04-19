@@ -9,9 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class Hello {
 
     @GetMapping("/meassage")
-    public String Message(){
+    public String Message() {
 
         return "welcome to ci&& cd Pipeline ";
+    }
+
+        @GetMapping("/final")
+                public  String Test(){
+
+            return "Thanks Ci & cd pipeline setup Everything";
+
     }
 
 }
