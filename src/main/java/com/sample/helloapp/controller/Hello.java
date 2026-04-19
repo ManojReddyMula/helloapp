@@ -21,4 +21,11 @@ public class Hello {
 
     }
 
+    @GetMapping("/test")
+    public String Task(){
+
+        return " cod pushed github, docker images created, pushed into docker hub";
+
+    }
+
 }
