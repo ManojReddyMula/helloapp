@@ -28,6 +28,9 @@ public class Hello {
 
     }
 
-
+    @GetMapping("/new")
+    public String  newFeature(){
+        return "new feature added";
+    }
 
 }
