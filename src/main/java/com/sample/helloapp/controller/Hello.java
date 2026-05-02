@@ -28,10 +28,6 @@ public class Hello {
 
     }
 
-    @GetMapping("/greet")
-    public String Greeting(){
-        return "Hii Nice to meet you";
 
-    }
 
 }
