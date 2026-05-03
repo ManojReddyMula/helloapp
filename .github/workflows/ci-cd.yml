@@ -25,7 +25,7 @@ jobs:
      # Step 3: Build + Sonar
       - name: Analyze with SonarCloud
         run: mvn clean verify sonar:sonar \
-              -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+              -Dsonar.login=${{ secrets.NEW_SONAR_TOKEN }}
           
       # Step 4: Build JAR with Maven
       - name: Build with Maven
