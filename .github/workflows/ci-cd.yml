@@ -21,18 +21,24 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      # Step 3: Build JAR with Maven
+
+     # Step 3: Build + Sonar
+      - name: Analyze with SonarCloud
+        run: mvn clean verify sonar:sonar \
+              -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          
+      # Step 4: Build JAR with Maven
       - name: Build with Maven
         run: mvn clean package -DskipTests
 
-      # Step 4: Login to Docker Hub
+      # Step 5: Login to Docker Hub
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Step 5: Build Docker Image
+      # Step 6: Build Docker Image
       - name: Build Docker Image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/springboot-ci-demo-v4:latest .
 
