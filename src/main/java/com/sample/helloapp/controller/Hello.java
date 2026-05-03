@@ -33,4 +33,8 @@ public class Hello {
         return "new feature added";
     }
 
+   @GetMapping("/Test")
+    public String Test2(){
+        return "Test2 runs sucessfully";
+   }
 }
