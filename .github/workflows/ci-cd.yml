@@ -22,14 +22,16 @@ jobs:
           distribution: 'temurin'
 
 
-     # Step 3: Build + Sonar
+  # Step 3: Build + Sonar
       - name: Analyze with SonarCloud
-        run: mvn clean verify sonar:sonar \
-              -Dsonar.token=${{ secrets.NEW_SONAR_TOKEN }}
+        env:
+          SONAR_TOKEN: ${{ secrets.NEW_SONAR_TOKEN }}
+        run: mvn clean verify sonar:sonar -Dsonar.token=$SONAR_TOKEN
           
-      # Step 4: Build JAR with Maven
-      - name: Build with Maven
-        run: mvn clean package -DskipTests
+           # Step 4: Skipped - already built above, just package for Docker
+      - name: Package (skip tests, already ran)
+        run: mvn package -DskipTests
+
 
       # Step 5: Login to Docker Hub
       - name: Login to Docker Hub
